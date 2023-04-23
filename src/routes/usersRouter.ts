@@ -1,22 +1,15 @@
-import { Router, Response, Request } from "express";
-
-const {
+import { Router } from "express";
+import {
   registerNewUser,
   loginUser,
   logoutUser,
-} = require("../../models/usersController");
-const { authMiddleware } = require("../../middlewares/authMiddleware");
+} from "../controllers/users/usersController";
+import authMiddleware from "../middlewares/authMiddleware";
 
 const usersRouter = Router();
 
-usersRouter.post("/register", async (req: Request, res: Response) => {
-  const newUser = await registerNewUser(req.body);
-  res.json(newUser);
-});
+usersRouter.post("/register", registerNewUser);
+usersRouter.post("/login", loginUser);
+usersRouter.post("/logout", authMiddleware, logoutUser);
 
-usersRouter.post("/login", async (req: Request, res: Response) => {
-  const response = await loginUser(req.body);
-  res.json(response);
-});
-
-module.exports = usersRouter;
+export default usersRouter;

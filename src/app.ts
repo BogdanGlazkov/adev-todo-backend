@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import bodyParser from "body-parser";
 import todosRouter from "./routes/todosRouter";
+import usersRouter from "./routes/usersRouter";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(bodyParser.json({ limit: "31mb" }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 app.use(cors());
+app.use(usersRouter);
 app.use(todosRouter);
 
 const uri = `${process.env.MONGO_DB}`;

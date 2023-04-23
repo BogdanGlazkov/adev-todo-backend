@@ -1,9 +1,10 @@
+import { Response, NextFunction } from "express";
 const jwt = require("jsonwebtoken");
 const User = require("../models/userSchema");
 
 const secret = process.env.SECRET;
 
-const authMiddleware = async (req, res, next) => {
+const authMiddleware = async (req: any, res: Response, next: NextFunction) => {
   try {
     const [, token] = await req.headers.authorization.split(" ");
     if (!token) {
@@ -31,4 +32,4 @@ const authMiddleware = async (req, res, next) => {
   }
 };
 
-module.exports = { authMiddleware };
+export default authMiddleware;
