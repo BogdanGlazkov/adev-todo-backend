@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
-import { ITodo } from "../../types/todo";
-import Todo from "../../models/todo";
+import { ITodo } from "../../types/types";
+import Todo from "../../models/todoSchema";
 
 const getTodos = async (req: Request, res: Response): Promise<void> => {
   try {
