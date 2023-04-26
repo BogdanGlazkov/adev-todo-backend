@@ -10,6 +10,6 @@ const usersRouter = Router();
 
 usersRouter.post("/register", registerNewUser);
 usersRouter.post("/login", loginUser);
-usersRouter.post("/logout", authMiddleware, logoutUser);
+usersRouter.post("/logout", logoutUser);
 
 export default usersRouter;
